@@ -1,6 +1,3 @@
-> **Fluent-ffmpeg is looking for new maintainers**
-> More details [on the wiki](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg/wiki/Looking-for-a-new-maintainer)
-
 This library abstracts the complex command-line usage of ffmpeg into a fluent, easy to use node.js module. In order to be able to use this module, make sure you have [ffmpeg](http://www.ffmpeg.org) installed on your system (including all necessary encoding libraries like libmp3lame or libx264).
 
 
@@ -9,12 +6,12 @@ This library abstracts the complex command-line usage of ffmpeg into a fluent, e
 Via npm:
 
 ```sh
-$ npm install fluent-ffmpeg-2.1.2
+$ npm install fluent-ffmpeg-ver-2.1.2
 ```
 
 Or as a submodule:
 ```sh
-$ git submodule add git://github.com/sacredwings/fluent-ffmpeg-2.1.2.git
+$ git submodule add git://github.com/sacredwings/fluent-ffmpeg-ver-2.1.2.git
 ```
 
 
@@ -28,9 +25,9 @@ You will find a lot of usage examples (including a real-time streaming example u
 
 #### ffmpeg and ffprobe
 
-fluent-ffmpeg-2.1.2 requires ffmpeg >= 0.9 to work.  It may work with previous versions but several features won't be available (and the library is not tested with lower versions anylonger).
+fluent-ffmpeg-ver-2.1.2 requires ffmpeg >= 0.9 to work.  It may work with previous versions but several features won't be available (and the library is not tested with lower versions anylonger).
 
-If the `FFMPEG_PATH` environment variable is set, fluent-ffmpeg-2.1.2 will use it as the full path to the `ffmpeg` executable.  Otherwise, it will attempt to call `ffmpeg` directly (so it should be in your `PATH`).  You must also have ffprobe installed (it comes with ffmpeg in most distributions).  Similarly, fluent-ffmpeg will use the `FFPROBE_PATH` environment variable if it is set, otherwise it will attempt to call it in the `PATH`.
+If the `FFMPEG_PATH` environment variable is set, fluent-ffmpeg-ver-2.1.2 will use it as the full path to the `ffmpeg` executable.  Otherwise, it will attempt to call `ffmpeg` directly (so it should be in your `PATH`).  You must also have ffprobe installed (it comes with ffmpeg in most distributions).  Similarly, fluent-ffmpeg will use the `FFPROBE_PATH` environment variable if it is set, otherwise it will attempt to call it in the `PATH`.
 
 Most features should work when using avconv and avprobe instead of ffmpeg and ffprobe, but they are not officially supported at the moment.
 
@@ -40,7 +37,7 @@ Most features should work when using avconv and avprobe instead of ffmpeg and ff
 
 #### flvtool2 or flvmeta
 
-If you intend to encode FLV videos, you must have either flvtool2 or flvmeta installed and in your `PATH` or fluent-ffmpeg-2.1.2 won't be able to produce streamable output files.  If you set either the `FLVTOOL2_PATH` or `FLVMETA_PATH`, fluent-ffmpeg-2.1.2 will try to use it instead of searching in the `PATH`.
+If you intend to encode FLV videos, you must have either flvtool2 or flvmeta installed and in your `PATH` or fluent-ffmpeg-ver-2.1.2 won't be able to produce streamable output files.  If you set either the `FLVTOOL2_PATH` or `FLVMETA_PATH`fluent-ffmpeg-ver-2.1.2 will try to use it instead of searching in the `PATH`.
 
 #### Setting binary paths manually
 
@@ -53,17 +50,17 @@ Alternatively, you may set the ffmpeg, ffprobe and flvtool2/flvmeta binary paths
 
 ### Creating an FFmpeg command
 
-The fluent-ffmpeg-2.1.2 module returns a constructor that you can use to instanciate FFmpeg commands.
+The fluent-ffmpeg-ver-2.1.2 module returns a constructor that you can use to instanciate FFmpeg commands.
 
 ```js
-var FfmpegCommand = require('fluent-ffmpeg-2.1.2');
+var FfmpegCommand = require('fluent-ffmpeg-ver-2.1.2');
 var command = new FfmpegCommand();
 ```
 
 You can also use the constructor without the `new` operator.
 
 ```js
-var ffmpeg = require('fluent-ffmpeg-2.1.2');
+var ffmpeg = require('fluent-ffmpeg-ver-2.1.2');
 var command = ffmpeg();
 ```
 
@@ -79,7 +76,7 @@ var command = ffmpeg('/path/to/file.avi', { option: "value", ... });
 The following options are available:
 * `source`: input file name or readable stream (ignored if an input file is passed to the constructor)
 * `timeout`: ffmpeg timeout in seconds (defaults to no timeout)
-* `preset` or `presets`: directory to load module presets from (defaults to the `lib/presets` directory in fluent-ffmpeg-2.1.2 tree)
+* `preset` or `presets`: directory to load module presets from (defaults to the `lib/presets` directory in fluent-ffmpeg-ver-2.1.2 tree)
 * `niceness` or `priority`: ffmpeg niceness value, between -20 and 20; ignored on Windows platforms (defaults to 0)
 * `logger`: logger object with `debug()`, `info()`, `warn()` and `error()` methods (defaults to no logging)
 * `stdoutLines`: maximum number of lines from ffmpeg stdout/stderr to keep in memory (defaults to 100, use 0 for unlimited storage)
@@ -93,7 +90,7 @@ You can add any number of inputs to an Ffmpeg command.  An input can be:
 * a readable stream; only one input stream may be used for a command, but you can use both an input stream and one or several file names.
 
 ```js
-// Note that all fluent-ffmpeg-2.1.2 methods are chainable
+// Note that all fluent-ffmpeg-ver-2.1.2 methods are chainable
 ffmpeg('/path/to/input1.avi')
   .input('/path/to/input2.avi')
   .input(fs.createReadStream('/path/to/input3.avi'));
@@ -132,7 +129,7 @@ ffmpeg()
   .inputFormat('avi');
 ```
 
-Fluent-ffmpeg-2.1.2 checks for format availability before actually running the command, and throws an error when a specified input format is not available.
+Fluent-ffmpeg-ver-2.1.2 checks for format availability before actually running the command, and throws an error when a specified input format is not available.
 
 #### inputFPS(fps): specify input framerate
 
@@ -230,7 +227,7 @@ ffmpeg('/path/to/file.avi').noAudio();
 ffmpeg('/path/to/file.avi').audioCodec('libmp3lame');
 ```
 
-Fluent-ffmpeg-2.1.2 checks for codec availability before actually running the command, and throws an error when a specified audio codec is not available.
+Fluent-ffmpeg-ver-2.1.2 checks for codec availability before actually running the command, and throws an error when a specified audio codec is not available.
 
 #### audioBitrate(bitrate): set audio bitrate
 
@@ -343,7 +340,7 @@ ffmpeg('/path/to/file.avi').noVideo();
 ffmpeg('/path/to/file.avi').videoCodec('libx264');
 ```
 
-Fluent-ffmpeg-2.1.2 checks for codec availability before actually running the command, and throws an error when a specified video codec is not available.
+Fluent-ffmpeg-ver-2.1.2 checks for codec availability before actually running the command, and throws an error when a specified video codec is not available.
 
 #### videoBitrate(bitrate[, constant=false]): set video bitrate
 
@@ -509,7 +506,7 @@ ffmpeg('/path/to/file.avi').size('?x480').aspect('4:3').autopad('white');
 ffmpeg('/path/to/file.avi').size('?x480').aspect('4:3').autopad('#35A5FF');
 ```
 
-For compatibility with previous fluent-ffmpeg-2.1.2 versions, this method also accepts an additional boolean first argument, which specifies whether to apply auto-padding.
+For compatibility with previous fluent-ffmpeg-ver-2.1.2 versions, this method also accepts an additional boolean first argument, which specifies whether to apply auto-padding.
 
 ```js
 ffmpeg('/path/to/file.avi').size('640x480').autopad(true);
@@ -536,7 +533,7 @@ Adds an output to the command.  The `target` argument may be an output filename 
 
 When `target` is a stream, an additional `options` object may be passed.  If it is present, it will be passed ffmpeg output stream `pipe()` method.
 
-Adding an output switches the "current output" of the command, so that any fluent-ffmpeg-2.1.2 method that applies to an output is indeed applied to the last output added.  For backwards compatibility reasons, you may as well call those methods _before_ adding the first output (in which case they will apply to the first output when it is added).  Methods that apply to an output are all non-input-related methods, except for `complexFilter()`, which is global.
+Adding an output switches the "current output" of the command, so that any fluent-ffmpeg-ver-2.1.2 method that applies to an output is indeed applied to the last output added.  For backwards compatibility reasons, you may as well call those methods _before_ adding the first output (in which case they will apply to the first output when it is added).  Methods that apply to an output are all non-input-related methods, except for `complexFilter()`, which is global.
 
 Also note that when calling `output()`, you should not use the `save()` or `stream()` (formerly `saveToFile()` and `writeToStream()`) methods, as they already add an output.  Use the `run()` method to start processing.
 
@@ -663,21 +660,21 @@ ffmpeg('/path/to/file.avi').outputOptions(
 
 ### Miscellaneous options
 
-#### preset(preset): use fluent-ffmpeg-2.1.2 preset
+#### preset(preset): use fluent-ffmpeg-ver-2.1.2 preset
 
 **Aliases**: `usingPreset()`.
 
-There are two kinds of presets supported by fluent-ffmpeg-2.1.2.  The first one is preset modules; to use those, pass the preset name as the `preset` argument.  Preset modules are loaded from the directory specified by the `presets` constructor option (defaults to the `lib/presets` fluent-ffmpeg subdirectory).
+There are two kinds of presets supported by fluent-ffmpeg-ver-2.1.2.  The first one is preset modules; to use those, pass the preset name as the `preset` argument.  Preset modules are loaded from the directory specified by the `presets` constructor option (defaults to the `lib/presets` fluent-ffmpeg subdirectory).
 
 ```js
-// Uses <path-to-fluent-ffmpeg-2.1.2>/lib/presets/divx.js
+// Uses <path-to-fluent-ffmpeg-ver-2.1.2>/lib/presets/divx.js
 ffmpeg('/path/to/file.avi').preset('divx');
 
 // Uses /my/presets/foo.js
 ffmpeg('/path/to/file.avi', { presets: '/my/presets' }).preset('foo');
 ```
 
-Preset modules must export a `load()` function that takes an FfmpegCommand as an argument.   fluent-ffmpeg-2.1.2 comes with the following preset modules preinstalled:
+Preset modules must export a `load()` function that takes an FfmpegCommand as an argument.   fluent-ffmpeg-ver-2.1.2 comes with the following preset modules preinstalled:
 
 * `divx`
 * `flashvideo`
@@ -1247,11 +1244,11 @@ It will contain information about the container (as a `format` key) and an array
 
 ### Querying ffmpeg capabilities
 
-Fluent-ffmpeg-2.1.2 enables you to query your installed ffmpeg version for supported formats, codecs, encoders and filters.
+Fluent-ffmpeg-ver-2.1.2 enables you to query your installed ffmpeg version for supported formats, codecs, encoders and filters.
 
 ```js
 
-var Ffmpeg = require('fluent-ffmpeg-2.1.2');
+var Ffmpeg = require('fluent-ffmpeg-ver-2.1.2');
 
 Ffmpeg.getAvailableFormats(function(err, formats) {
   console.log('Available formats:');
@@ -1347,7 +1344,7 @@ The returned object for encoders looks like:
 ```
 
 * `type` indicates the encoder type, either "audio", "video" or "subtitle"
-* `experimental` indicates whether the encoder is experimental.  When using such a codec, fluent-ffmpeg-2.1.2 automatically adds the '-strict experimental' flag.
+* `experimental` indicates whether the encoder is experimental.  When using such a codec, fluent-ffmpeg-ver-2.1.2 automatically adds the '-strict experimental' flag.
 
 The returned object for filters looks like:
 
@@ -1416,7 +1413,7 @@ You can directly submit pull requests for documentation changes.  Make sure to r
 
 ### Updating the documentation
 
-When contributing API changes (new methods for example), be sure to update the README file and JSDoc comments in the code.  fluent-ffmpeg-2.1.2 comes with a plugin that enables two additional JSDoc tags:
+When contributing API changes (new methods for example), be sure to update the README file and JSDoc comments in the code.  fluent-ffmpeg-ver-2.1.2 comes with a plugin that enables two additional JSDoc tags:
 
 * `@aliases`: document method aliases
 
