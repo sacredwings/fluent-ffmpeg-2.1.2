@@ -1,6 +1,6 @@
 {
   "name": "fluent-ffmpeg-ver-2-1-2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A fluent API to FFMPEG (http://www.ffmpeg.org)",
   "keywords": [
     "ffmpeg"
@@ -19,13 +19,12 @@
   },
   "repository": "https://github.com/sacredwings/fluent-ffmpeg-ver-2-1-2.git",
   "devDependencies": {
-    "jsdoc": "latest",
     "mocha": "latest",
-    "should": "latest"
+    "should": "latest",
+    "jsdoc": "latest"
   },
   "dependencies": {
     "async": ">=0.2.9",
-    "fs": "^0.0.1-security",
     "which": "^1.1.1"
   },
   "engines": {
